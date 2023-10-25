@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-2</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'poppins', sans-serif;
+            box-sizing: border-box;
+       }
+       
+       .container{
+            width: 100%;
+            height: 100vh;
+            background-image: url(images/Project.jpg);
+            background-size: cover;
+            background-position: center;
+       }
+      
+       #menuIcon{
+            width: 60px;
+            border-radius: 50%;
+            position:fixed;
+            top: 40px;
+            right: 60px;
+            cursor: pointer;
+            z-index: 100;
+       }
+       .menu-box{
+            width: 0;
+            height: 0;
+            background: rgba(195, 157, 185, 0.8);
+            position: fixed;
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+       
+            border-bottom-left-radius: 100%;
+            transition: width 0.5s, height 0.5s, border-radius 0.5s;
+       }
+       
+       
+       .menu-box.open-menu{
+            width: 25%;
+            height: 100vh;
+            border-bottom-left-radius: 0;
+       }
+       
+       .menu-box.open-menu ul li{
+            opacity: 1;
+            transform: translateY(0);
+            transition: transform 1s, opacity 1s;
+            transition-delay: 0.3s;
+       }
+       
+       .menu-box ul li{
+            list-style-type: none;
+            margin: 10px;
+            text-align: center;
+       
+            
+       }
+       
+       .menu-box ul li a{
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            font-size: 40px;
+            font-weight: 600;
+            position: relative;
+            text-shadow: 0 0 0 rgb(19, 19, 18);
+            transition: text-shadow 0.3s, transform 0.3s;
+       }
+       
+       .menu-box ul li a:hover{
+            text-shadow:-3px 3px 0 rgb(14, 13, 13);
+            transform: translateY(-6px);
+       }
+       
+       .menu-box ul li a::after{
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            bottom:  19px;
+            right: -18px;
+            opacity: 0;
+            box-shadow: 0 0 0 rgb(11, 11, 11);
+            transition: box-shadow 0.5s;
+       }
+       
+       .menu-box ul li a:hover::after{
+            opacity: 1;
+            box-shadow: -2px 2px 0 rgb(12, 12, 12);
+       }
+
+       .content{
+        text-align:center;
+        position:fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+    .content h1{
+        font-size: 60px;
+        font-family:cursive;
+        color: rgba(10, 11, 10, 0.947);
+        font-weight: 600;
+    }
+    
+    </style>
+</head>
+
+<body>
+
+    <div class="container"></div>
+
+    <img src="images/menu.png" id="menuIcon">
+
+    <div class="menu-box" id="menuBox">
+      <ul>
+       
+        <li><a href="form.html">Form</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+      </ul>
+    </div>
+    <div class="content">
+        <h1>Age Calculator</h1>
+        <p>Click the "Signup" button below to calculate your age:</p>
+        <a href="form.html" style="text-decoration: none;">
+            <button style="background-color: #6f686d; color: #fff; padding: 10px 20px; cursor: pointer; border: none; border-radius: 4px;">
+                Signup
+            </button>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let menuBox = document.getElementById("menuBox");
+            let menuIcon = document.getElementById("menuIcon");
+    
+            menuIcon.onclick = function() {
+                menuBox.classList.toggle("open-menu");
+                if (menuBox.classList.contains("open-menu")) {
+                    menuIcon.src = "images/close.png";
+                } else {
+                    menuIcon.src = "images/menu.png";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
